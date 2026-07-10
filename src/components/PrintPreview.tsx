@@ -246,6 +246,8 @@ export default function PrintPreview({
           <p class="bold">CLIENT:</p>
           ${state.clientName ? `<p class="mb-1">${state.clientName}</p>` : ""}
           ${state.clientPhone ? `<p class="mb-1">MOB: ${state.clientPhone}</p>` : ""}
+          ${state.vehicleNumber ? `<p class="mb-1">VEHICLE NO: ${state.vehicleNumber}</p>` : ""}
+          ${state.remarks ? `<p class="mb-1">REMARKS: ${state.remarks}</p>` : ""}
           <div class="divider"></div>
 
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
@@ -322,13 +324,15 @@ export default function PrintPreview({
               <div class="section-title" style="text-align: right;">PREPARED FOR</div>
               ${state.clientName ? `<p style="margin: 0 0 4px 0; font-weight: 700;">${state.clientName}</p>` : ""}
               ${state.clientPhone ? `<p style="margin: 0 0 4px 0; font-weight: 600; color: #1e293b;">MOB: ${state.clientPhone}</p>` : ""}
+              ${state.vehicleNumber ? `<p style="margin: 0 0 4px 0; font-weight: 600; color: #1e293b;">VEHICLE NO: ${state.vehicleNumber}</p>` : ""}
+              ${state.remarks ? `<p style="margin: 0 0 4px 0; color: #475569; font-style: italic;">REMARKS: ${state.remarks}</p>` : ""}
               ${state.clientAddress ? `<p style="margin: 0 0 4px 0; color: #64748b;">${state.clientAddress}</p>` : ""}
               ${state.clientEmail ? `<p style="margin: 0; color: #64748b;">Email: ${state.clientEmail}</p>` : ""}
             </div>
           </div>
 
           <div class="meta-box">
-            <div class="meta-grid">
+            <div class="meta-grid" style="display: grid; grid-template-columns: repeat(${state.vehicleNumber || state.remarks ? '5' : '3'}, 1fr); gap: 15px;">
               <div class="meta-item">
                 <label>${numLabelFriendly}</label>
                 <span>${state.quoteNumber}</span>
@@ -341,6 +345,16 @@ export default function PrintPreview({
                 <label>Currency</label>
                 <span>${state.currency}</span>
               </div>
+              ${state.vehicleNumber ? `
+              <div class="meta-item">
+                <label>Vehicle No.</label>
+                <span style="font-family: monospace; font-weight: 700;">${state.vehicleNumber}</span>
+              </div>` : ""}
+              ${state.remarks ? `
+              <div class="meta-item">
+                <label>Remarks</label>
+                <span style="font-style: italic;">${state.remarks}</span>
+              </div>` : ""}
             </div>
           </div>
 
@@ -640,17 +654,19 @@ export default function PrintPreview({
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed max-w-xs">{businessProfile.address}</p>
                   <p className="text-xs text-slate-500 mt-1">Tel: {businessProfile.phone} | {businessProfile.email}</p>
                 </div>
-                <div className="text-right">
+                 <div className="text-right">
                   <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Prepared For</p>
                   {state.clientName && <p className="font-bold text-slate-800 mt-1">{state.clientName}</p>}
                   {state.clientPhone && <p className="text-xs font-semibold text-slate-700">MOB: {state.clientPhone}</p>}
+                  {state.vehicleNumber && <p className="text-xs font-semibold text-slate-700">Vehicle No: {state.vehicleNumber}</p>}
+                  {state.remarks && <p className="text-xs text-slate-500 mt-1 italic">Remarks: {state.remarks}</p>}
                   {state.clientAddress && <p className="text-xs text-slate-500 mt-1 leading-relaxed max-w-xs ml-auto">{state.clientAddress}</p>}
                   {state.clientEmail && <p className="text-xs text-slate-500 mt-1">Email: {state.clientEmail}</p>}
                 </div>
               </div>
 
               {/* Summary metadata bar */}
-              <div className="bg-slate-50 border border-slate-100 p-4 rounded-xl grid grid-cols-3 gap-4 text-center">
+              <div className={`bg-slate-50 border border-slate-100 p-4 rounded-xl grid gap-4 text-center ${state.vehicleNumber && state.remarks ? "grid-cols-5" : state.vehicleNumber || state.remarks ? "grid-cols-4" : "grid-cols-3"}`}>
                 <div>
                   <span className="block text-[9px] uppercase font-bold text-slate-400">
                     {state.documentType === "Delivery Challan" ? "Challan No" : state.documentType === "Order" ? "Order No" : "Quote No"}
@@ -667,6 +683,18 @@ export default function PrintPreview({
                     {state.currency === "₹" || state.currency === "INR" ? "INR (₹)" : state.currency === "$" || state.currency === "USD" ? "USD ($)" : state.currency === "€" ? "EUR (€)" : state.currency === "£" ? "GBP (£)" : state.currency === "¥" ? "JPY (¥)" : `${state.currency}`}
                   </span>
                 </div>
+                {state.vehicleNumber && (
+                  <div>
+                    <span className="block text-[9px] uppercase font-bold text-slate-400">Vehicle No.</span>
+                    <span className="text-xs font-bold text-indigo-600 mt-0.5 block font-mono">{state.vehicleNumber}</span>
+                  </div>
+                )}
+                {state.remarks && (
+                  <div>
+                    <span className="block text-[9px] uppercase font-bold text-slate-400">Remarks</span>
+                    <span className="text-xs font-medium text-slate-600 mt-0.5 block italic">{state.remarks}</span>
+                  </div>
+                )}
               </div>
 
               {/* Items Table */}
@@ -810,6 +838,8 @@ export default function PrintPreview({
                 <span className="font-bold block">CLIENT PROFILE:</span>
                 {state.clientName && <p className="font-bold">{state.clientName}</p>}
                 {state.clientPhone && <p>MOB: {state.clientPhone}</p>}
+                {state.vehicleNumber && <p>VEHICLE: {state.vehicleNumber}</p>}
+                {state.remarks && <p className="italic">REMARKS: {state.remarks}</p>}
                 {state.clientAddress && <p className="opacity-80 text-[10px]">{state.clientAddress}</p>}
               </div>
 

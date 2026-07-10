@@ -35,6 +35,8 @@ export interface QuoteState {
   taxPercentage: number;
   notes: string;
   terms: string;
+  vehicleNumber?: string;
+  remarks?: string;
 }
 
 export interface SavedQuote extends QuoteState {

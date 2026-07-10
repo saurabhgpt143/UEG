@@ -456,6 +456,28 @@ export default function App() {
                       placeholder=""
                     />
                   </div>
+
+                  <div>
+                    <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Vehicle No.</label>
+                    <input
+                      type="text"
+                      value={state.vehicleNumber || ""}
+                      onChange={(e) => setState({ ...state, vehicleNumber: e.target.value })}
+                      className="w-full mt-1 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-hidden focus:border-indigo-500 transition-colors font-medium text-slate-800"
+                      placeholder="e.g. KA-01-MJ-1234"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Remarks / Note</label>
+                    <input
+                      type="text"
+                      value={state.remarks || ""}
+                      onChange={(e) => setState({ ...state, remarks: e.target.value })}
+                      className="w-full mt-1 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-hidden focus:border-indigo-500 transition-colors font-medium text-slate-800"
+                      placeholder="e.g. Site Delivery"
+                    />
+                  </div>
                 </div>
               </div>
 

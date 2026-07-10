@@ -127,5 +127,7 @@ export const DEFAULT_QUOTE_STATE = (profileName: string): QuoteState => {
     taxPercentage: 0,
     notes: "Thank you for your business! We look forward to working with you.",
     terms: "Payment is due upon acceptance of this quotation. Work will commence after signature and deposit.",
+    vehicleNumber: "",
+    remarks: "",
   };
 };
