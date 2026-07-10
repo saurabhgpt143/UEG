@@ -1,0 +1,6 @@
+{
+  "name": "Universe Estimate Generator",
+  "description": "Professional cosmic-themed estimator with instant PDF generation, high-fidelity thermal receipt formats, and voice-assisted quote automation.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

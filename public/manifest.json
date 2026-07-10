@@ -1,0 +1,17 @@
+{
+  "name": "Universe Estimate Generator",
+  "short_name": "UEG",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "description": "Professional cosmic-themed estimator with instant PDF generation, high-fidelity thermal receipt formats, and voice-assisted quote automation.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
