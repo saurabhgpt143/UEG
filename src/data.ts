@@ -1,5 +1,21 @@
 import { BusinessProfile, QuoteItem, QuoteState } from "./types";
 
+export const isNilOrEmpty = (val: string | number | null | undefined): boolean => {
+  if (val === null || val === undefined) return true;
+  if (typeof val === "number") return val === 0 || isNaN(val);
+  const s = String(val).trim().toLowerCase();
+  return (
+    s === "" ||
+    s === "nil" ||
+    s === "nill" ||
+    s === "null" ||
+    s === "none" ||
+    s === "n/a" ||
+    s === "na" ||
+    s === "-"
+  );
+};
+
 export const DEFAULT_BUSINESS_PROFILE: BusinessProfile = {
   name: "M.G. INDUSTRIES",
   logoUrl: "",
@@ -13,47 +29,71 @@ export const DEFAULT_BUSINESS_PROFILE: BusinessProfile = {
   bankRouting: "MAHB0000341",
 };
 
+export const COMMON_UNITS = [
+  "Pcs",
+  "Nos",
+  "Kg",
+  "Mtr",
+  "Box",
+  "Set",
+  "Ton",
+  "Bag",
+  "Sq.Ft",
+  "Bundle",
+  "Ltr",
+  "Roll",
+  "Job",
+  "Hrs"
+];
+
 export const SAMPLE_PRODUCTS: Omit<QuoteItem, "id">[] = [
   {
     name: "Profile Sheet",
     description: "",
     quantity: 1,
+    unit: "Pcs",
     unitPrice: 420.00,
   },
   {
     name: "M.S. Pipe",
     description: "",
     quantity: 1,
+    unit: "Mtr",
     unitPrice: 850.00,
   },
   {
     name: "Self-Drill Screw",
     description: "",
     quantity: 1,
+    unit: "Pcs",
     unitPrice: 2.50,
   },
   {
     name: "M.S. Flat",
     description: "",
     quantity: 1,
+    unit: "Kg",
     unitPrice: 600.00,
   },
   {
     name: "Nut Bolt",
     description: "",
     quantity: 1,
+    unit: "Pcs",
     unitPrice: 5.00,
   },
   {
     name: "Accessories",
     description: "",
     quantity: 1,
+    unit: "Set",
     unitPrice: 1200.00,
   },
   {
     name: "Miscellaneous",
     description: "",
     quantity: 1,
+    unit: "Job",
     unitPrice: 500.00,
   },
 ];
@@ -113,6 +153,7 @@ export const DEFAULT_QUOTE_STATE = (profileName: string): QuoteState => {
         name: "Profile Sheet",
         description: "",
         quantity: 10,
+        unit: "Pcs",
         unitPrice: 420.00,
       },
       {
@@ -120,6 +161,7 @@ export const DEFAULT_QUOTE_STATE = (profileName: string): QuoteState => {
         name: "Self-Drill Screw",
         description: "",
         quantity: 200,
+        unit: "Pcs",
         unitPrice: 2.50,
       },
     ],

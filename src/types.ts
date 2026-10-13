@@ -3,6 +3,7 @@ export interface QuoteItem {
   name: string;
   description: string;
   quantity: number;
+  unit?: string; // Unit of Quantity, e.g. "Pcs", "Nos", "Kg", "Mtr", "Box", "Set", "Ton", etc.
   unitPrice: number;
 }
 

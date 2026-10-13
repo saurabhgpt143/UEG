@@ -331,7 +331,8 @@ export default function VoiceAssistant({ currentState, onStateUpdate }: VoiceAss
               <p className="font-semibold text-slate-200 mb-1">Update Clients & Rates:</p>
               <ul className="list-disc pl-4 space-y-1 text-slate-400 font-mono">
                 <li>"Set client to Martha Smith from Helix Tech"</li>
-                <li>"Change tax rate to seven point five percent"</li>
+                <li>"Set document type to Delivery Challan"</li>
+                <li>"Set vehicle number to MP-20-HB-7721"</li>
                 <li>"Apply twelve percent discount"</li>
               </ul>
             </div>

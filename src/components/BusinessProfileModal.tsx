@@ -21,30 +21,30 @@ export default function BusinessProfileModal({ isOpen, onClose, profile, onSave 
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 animate-fade-in" id="profile-modal-overlay">
-      <div className="bg-white rounded-2xl border border-slate-200 w-full max-w-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden" id="profile-modal-container">
+    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 p-2 sm:p-4 animate-fade-in" id="profile-modal-overlay">
+      <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 w-full max-w-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden" id="profile-modal-container">
         
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-150 flex items-center justify-between bg-slate-50">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
-              <Building className="w-5 h-5" />
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-150 flex items-center justify-between bg-slate-50">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-indigo-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+              <Building className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-800 text-base">Business Settings</h3>
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Sender profile & payment info</p>
+              <h3 className="font-bold text-slate-800 text-sm sm:text-base">Business Settings</h3>
+              <p className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-widest font-bold">Sender profile & payment info</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 hover:bg-slate-200/60 rounded-lg text-slate-400 hover:text-slate-600 transition-colors"
+            className="p-1.5 hover:bg-slate-200/60 rounded-lg text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6">
           
           {/* Section 1: Core Identity */}
           <div className="space-y-4">
@@ -185,17 +185,17 @@ export default function BusinessProfileModal({ isOpen, onClose, profile, onSave 
         </form>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-slate-150 flex items-center justify-end gap-3 bg-slate-50">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-slate-150 flex items-center justify-end gap-2.5 sm:gap-3 bg-slate-50">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 border border-slate-200 rounded text-xs font-bold uppercase text-slate-600 hover:bg-slate-100 transition-colors"
+            className="flex-1 sm:flex-none px-4 py-2 border border-slate-200 rounded-lg text-xs font-bold uppercase text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer text-center"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
-            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-xs font-bold uppercase flex items-center gap-1.5 shadow-md shadow-indigo-600/10 transition-colors"
+            className="flex-1 sm:flex-none px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold uppercase flex items-center justify-center gap-1.5 shadow-md shadow-indigo-600/10 transition-colors cursor-pointer"
           >
             <Save className="w-4 h-4" />
             Save Profile
